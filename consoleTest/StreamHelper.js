@@ -1,6 +1,6 @@
 // Note:
 // console test
-// 直接貼console可用
+// 全選複製貼console可用
 // 直播開始後在直播頁面使用 重整後請重新使用 無須登入
 // log level 可以開 Info only
 // 網站音訊關閉時 提示聲也會關閉
@@ -122,6 +122,8 @@ var callbackM = function (mutationsList) {
 
         // todo: marquee
         /*
+        var today = new Date();
+        console.log(today.getHours() + ":" + today.getMinutes());
         console.log(
             "U: " + mutation.addedNodes[0].querySelector('.username').innerText + " : " +
             "M: " + mutation.addedNodes[0].querySelector('.message-content').innerText
@@ -150,6 +152,8 @@ var callbackG = function (mutationsList) {
             autoReply("感謝 " + strAry[0] + " 的 " + strAry[1].replace("送出 ", ""));
 
             // todo: poster
+            var today = new Date();
+            console.log(today.getHours() + ":" + today.getMinutes());
             console.log("感謝 " + strAry[0] + " 的 " + strAry[1].replace("送出 ", "") + strAry[2]);
             playBeep(EventType.GIFT);
         }
