@@ -7,8 +7,26 @@
 
 var ObserveConfig = { childList: true };
 var EventType = Object.freeze({ "DEFAULT": 0, "JOIN": 1, "MSG": 2, "GIFT": 3 });
-var userName = (document.querySelector('.bottom-bar') != undefined) ? document.querySelector('.bottom-bar').querySelectorAll('.username')[0].innerText : "userName";
+var userName = userIdentify();
 var attentionList = [];
+
+function userIdentify() {
+    var name = "name";
+    var btmBar = document.querySelector('.bottom-bar');
+    // login
+    if (btmBar != undefined) {
+        var userInfo = btmBar.querySelectorAll('.username');
+        if (userInfo.length > 0) {
+            //小耳朵
+            name = userInfo[0].innerText;
+        } else {
+            //主播
+            name = document.querySelector('.creator').querySelectorAll('.nickname')[0].innerText;
+        }
+    }
+    console.log("username : " + name);
+    return name;
+}
 
 //////////////////////////////////////////////////////////////////////
 // Beep.
@@ -118,7 +136,7 @@ var joinTarget = document.getElementById('ChatBox');
  */
 var callbackM = function (mutationsList) {
     for (var mutation of mutationsList) {
-        if (mutation.addedNodes[0].querySelector('.username').innerText == userName) return;
+        if (mutation.addedNodes[0] && mutation.addedNodes[0].querySelector('.username').innerText == userName) return;
 
         // todo: marquee
         /*
