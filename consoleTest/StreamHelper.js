@@ -5,8 +5,8 @@
 // log level 可以開 Info only
 // 網站音訊關閉時 提示聲也會關閉
 
-const ObserveConfig = { childList: true };
-const EventType = Object.freeze({ "DEFAULT": 0, "JOIN": 1, "MSG": 2, "GIFT": 3 });
+var ObserveConfig = { childList: true };
+var EventType = Object.freeze({ "DEFAULT": 0, "JOIN": 1, "MSG": 2, "GIFT": 3 });
 var userName = (document.querySelector('.bottom-bar') != undefined) ? document.querySelector('.bottom-bar').querySelectorAll('.username')[0].innerText : "userName";
 var attentionList = [];
 
