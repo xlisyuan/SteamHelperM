@@ -38,11 +38,23 @@ function userIdentify() {
 */
 var beeps = [
     new Audio("https://freesound.org/data/previews/192/192276_3509815-lq.mp3"),
-    new Audio("https://freesound.org/data/previews/484/484344_5121236-lq.mp3"),
-    new Audio("https://freesound.org/data/previews/43/43677_24837-lq.mp3"),
-    new Audio("https://freesound.org/data/previews/463/463363_4524389-lq.mp3"),
-    new Audio("https://freesound.org/data/previews/233/233062_4207519-lq.mp3")
+
+    // 進入直播間
+    new Audio("https://cdn.freesound.org/previews/13/13658_12368-lq.mp3"),
+
+    // 留言
+    new Audio("https://cdn.freesound.org/previews/256/256116_4486188-lq.mp3"),
+    new Audio("https://cdn.freesound.org/previews/590/590042_129727-lq.mp3"),
 ];
+var attentionBeeps = [
+    new Audio("https://freesound.org/data/previews/192/192276_3509815-lq.mp3"),
+    new Audio("https://cdn.freesound.org/previews/242/242429_3509815-lq.mp3"),
+    new Audio("https://cdn.freesound.org/previews/177/177494_33044-lq.mp3"),
+    new Audio("https://cdn.freesound.org/previews/352/352661_4019029-lq.mp3")
+];
+
+//louder 留言 https://freesound.org/data/previews/43/43677_24837-lq.mp3
+//louder 進入直播間 https://freesound.org/data/previews/484/484344_5121236-lq.mp3
 
 /**
  * Beep Volume on EventType
@@ -52,7 +64,7 @@ var BeepVolume = [true, true, true, true];
 function playBeep(type = EventType.DEFAULT, isAttention = false) {
 
     if (BeepVolume[EventType.DEFAULT] && BeepVolume[type]) {
-        beeps[isAttention ? 4 : type].play();
+        isAttention ? attentionBeeps[type].play() : beeps[type].play();
     }
 }
 
@@ -147,8 +159,8 @@ var callbackM = function (mutationsList) {
             "M: " + mutation.addedNodes[0].querySelector('.message-content').innerText
         );
         */
-
-        playBeep(EventType.MSG);
+        let isAttention = mutation.addedNodes[0] && mutation.addedNodes[0].querySelector('.username') && attentionList.includes(mutation.addedNodes[0].querySelector('.username').innerText);
+        playBeep(EventType.MSG, isAttention);
     }
 };
 
@@ -173,7 +185,8 @@ var callbackG = function (mutationsList) {
             var today = new Date();
             console.log(today.getHours() + ":" + today.getMinutes());
             console.log("感謝 " + strAry[0] + " 的 " + strAry[1].replace("送出 ", "") + strAry[2]);
-            playBeep(EventType.GIFT);
+            // playBeep(EventType.GIFT);
+            playBeep(EventType.GIFT, attentionList.includes(strAry[0]));
         }
     }
 };
