@@ -193,22 +193,22 @@ var stopReply = true;
 // todo: poster(marquee) on/off by EventType
 
 //全部靜音
-//volumeBeep(BeepType.DEFAULT, false);
+//volumeBeep(EventType.DEFAULT, false);
 //取消全部靜音
-//volumeBeep(BeepType.DEFAULT, true);
+//volumeBeep(EventType.DEFAULT, true);
 
 //靜音留言
-//volumeBeep(BeepType.MSG, false);
+//volumeBeep(EventType.MSG, false);
 //開啟留言音效
-//volumeBeep(BeepType.MSG, true);
+//volumeBeep(EventType.MSG, true);
 //靜音禮物
-//volumeBeep(BeepType.GIFT, false);
+//volumeBeep(EventType.GIFT, false);
 //開啟禮物音效
-//volumeBeep(BeepType.GIFT, true);
+//volumeBeep(EventType.GIFT, true);
 //靜音歡迎
-//volumeBeep(BeepType.JOIN, false);
+//volumeBeep(EventType.JOIN, false);
 //開啟歡迎音效
-//volumeBeep(BeepType.JOIN, true);
+//volumeBeep(EventType.JOIN, true);
 
 //observerJ.disconnect();
 //observerM.disconnect();
