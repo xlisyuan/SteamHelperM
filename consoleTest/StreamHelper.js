@@ -46,6 +46,8 @@ var beeps = [
     new Audio("https://cdn.freesound.org/previews/256/256116_4486188-lq.mp3"),
     new Audio("https://cdn.freesound.org/previews/590/590042_129727-lq.mp3"),
 ];
+
+// 特別關注音效
 var attentionBeeps = [
     new Audio("https://freesound.org/data/previews/192/192276_3509815-lq.mp3"),
     new Audio("https://cdn.freesound.org/previews/242/242429_3509815-lq.mp3"),
@@ -198,6 +200,7 @@ var giftTarget = document.querySelector('.gift-queue');
 // Settings.
 
 // 特別關注 填完整ID ["NameA","NameB","NameC"]
+// 榜一姐姐放這就對了
 attentionList = [];
 
 var stopReply = true;
